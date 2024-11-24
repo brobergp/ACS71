@@ -1,0 +1,286 @@
+units:
+  # Proxy Spacing Variables
+  kx: 18
+  ky: 17
+   # Padding Variables
+  px: kx 
+  py: ky 
+  $default_width: 17.5
+  $default_height: 16.5
+
+points:
+  zones:
+    matrix:
+      key:
+        padding: 1ky
+        spread: 1kx
+      columns:
+        extra:
+          rows:
+            function: $unset
+            num: $unset
+            first: $unset
+            second: $unset
+            third:
+              column_net: P1
+              row_net: P19
+              mirror.row_net: P13
+              width: 1.5kx
+              shift: [0,5]
+              rotate: 90
+        firstc:
+          key.column_net: P1
+        secondc:
+          key.stagger: 3 
+          key.column_net: P2
+        thirdc:
+          key.stagger: 5
+          key.column_net: P3
+        fourthc:
+          key.stagger: -5
+          key.column_net: P4
+        fifthc:
+          key.stagger: -3
+          key.column_net: P5
+        sixthc:
+          key.stagger: 0
+          key.column_net: P6
+        seventhc:
+          key.stagger: 0
+          key.column_net: P7
+          key:
+            asym: left
+          rows:
+            num: 
+              width: 1.5kx
+            first: 
+              width: 1.5kx
+            second:
+              width: 1.5kx
+              shift: [4.75,0]
+            third:
+            function: 
+              shift: [-4.75,0]
+      rows:
+        third:
+          row_net: P18
+          mirror.row_net: P12
+        second:
+          row_net: P17
+          mirror.row_net: P11
+        first:
+          row_net: P16
+          mirror.row_net: P10
+        num:
+          row_net: P15
+          mirror.row_net: P9
+        function:
+          row_net: P14
+          mirror.row_net: P8
+    thumb:
+      key:
+        padding: 1ky
+        spread: 1kx
+      columns:
+        first:
+      rows:
+        space:
+          row_net: P19
+          mirror.row_net: P13
+          column_net: P3
+          width: 1.5kx
+        alt:
+          row_net: P19
+          mirror.row_net: P13
+          column_net: P2
+          width: 1kx
+          shift: [-4.5, 0]
+      anchor:
+        ref: matrix_extra_third
+        shift: [-35, 2]
+      rotate: 28
+  rotate: 15
+  mirror:
+    ref: matrix_extra_third
+    distance: -27
+
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [kx, ky]
+  keys:
+    - what: rectangle
+      where: true
+      size: [14,14]      
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_seventhc_function
+          shift: [0.5px,0.5py]
+        - ref: matrix_seventhc_num
+          shift: [0.75px,0.5py]
+        - ref: matrix_seventhc_second
+          shift: [0.75px,-0.5py]
+        - ref: matrix_seventhc_third
+          shift: [0.5px,-0.5py]
+        - ref: matrix_fifthc_third
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_fourthc_third
+          shift: [0.45px,-0.5py]
+        - ref: matrix_fourthc_third
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_thirdc_third
+          shift: [0.5px,-0.5py]
+        - ref: matrix_thirdc_third
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_secondc_third
+          shift: [0.5px,-0.5py]
+        - ref: matrix_secondc_third
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_firstc_third
+          shift: [0.5px,-0.5py]
+        - ref: matrix_firstc_third
+          shift: [0px,-0.5py]
+
+        - ref: thumb_first_space
+          shift: [0.5px,-0.5py]
+        - ref: thumb_first_space
+          shift: [-0.75px,-0.5py]
+        - ref: thumb_first_alt
+          shift: [-0.5px,-0.5py]
+        - ref: thumb_first_alt
+          shift: [-0.5px,0.5py]
+        - ref: mirror_thumb_first_alt
+          shift: [-0.5px,0.5py]
+        - ref: mirror_thumb_first_alt
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_thumb_first_space
+          shift: [-0.75px,-0.5py]
+        - ref: mirror_thumb_first_space
+          shift: [0.5px,-0.5py]          
+        - ref: mirror_matrix_firstc_third
+          shift: [0px,-0.5py]
+        - ref: mirror_matrix_firstc_third
+          shift: [0.5px,-0.5py]
+
+        - ref: mirror_matrix_secondc_third
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_secondc_third
+          shift: [0.5px,-0.5py]
+        - ref: mirror_matrix_thirdc_third
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_thirdc_third
+          shift: [0.5px,-0.5py]
+        - ref: mirror_matrix_fourthc_third
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_fourthc_third
+          shift: [0.5px,-0.5py]
+        - ref: mirror_matrix_fifthc_third
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_sixthc_third
+          shift: [0.5px,-0.5py]
+        - ref: mirror_matrix_sixthc_second
+          shift: [0.5px,0]
+        - ref: mirror_matrix_sixthc_num
+          shift: [0.5px,0]
+        - ref: mirror_matrix_sixthc_function
+          shift: [0.5px,0.5px]
+        - ref: mirror_matrix_fifthc_function
+          shift: [-0.5px,0.5py]   
+        - ref: mirror_matrix_fourthc_function
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_fourthc_function
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_thirdc_function
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_thirdc_function
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_secondc_function
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_secondc_function
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_firstc_function
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_firstc_function
+          shift: [-0.5px,0.5py]
+        - ref: matrix_firstc_function
+          shift: [-0.5px,0.5py]
+        - ref: matrix_firstc_function
+          shift: [0.5px,0.5py]
+        - ref: matrix_secondc_function
+          shift: [-0.5px,0.5py]
+        - ref: matrix_secondc_function
+          shift: [0.5px,0.5py]
+        - ref: matrix_thirdc_function
+          shift: [-0.5px,0.5py]
+        - ref: matrix_thirdc_function
+          shift: [0.5px,0.5py]
+        - ref: matrix_fourthc_function
+          shift: [-0.5px,0.5py]
+        - ref: matrix_fourthc_function
+          shift: [0.5px,0.5py]
+        - ref: matrix_fifthc_function
+          shift: [-0.5px,0.5py]
+      fillet: 1                 
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+
+pcbs:
+  base:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+
+
+      promicro:
+        what: promicro
+        params:
+          orientation: "down"
+          RAW: "{type: 'net', value: 'RAW'}"
+          GND: "{type: 'net', value: 'GND'}"
+          RST: "{type: 'net', value: 'RST'}"
+          VCC: "{type: 'net', value: 'VCC'}"
+          P21: "{type: 'net', value: 'P21'}"
+          P20: "{type: 'net', value: 'P20'}"
+          P19: "{type: 'net', value: 'P19'}"
+          P18: "{type: 'net', value: 'P18'}"
+          P15: "{type: 'net', value: 'P15'}"
+          P14: "{type: 'net', value: 'P14'}"
+          P16: "{type: 'net', value: 'P16'}"
+          P10: "{type: 'net', value: 'P10'}"
+          P1: "{type: 'net', value: 'P1'}"
+          P0: "{type: 'net', value: 'P0'}"
+          P2: "{type: 'net', value: 'P2'}"
+          P3: "{type: 'net', value: 'P3'}"
+          P4: "{type: 'net', value: 'P4'}"
+          P5: "{type: 'net', value: 'P5'}"
+          P6: "{type: 'net', value: 'P6'}"
+          P7: "{type: 'net', value: 'P7'}"
+          P8: "{type: 'net', value: 'P8'}"
+          P9: "{type: 'net', value: 'P9'}"
+        where:
+          ref: matrix_firstc_function
+          shift: [-20,-30]
+          rotate: 255
